@@ -1,0 +1,24 @@
+# Dependencies and build output
+node_modules/
+dist/
+
+# Local configuration and secrets
+.env
+.env.*
+!.env.example
+certs/
+*.pem
+*.key
+*.crt
+*.srl
+license.key*
+
+# Runtime copies of the documents (seeded from input-docs at start-up)
+storage/
+
+# Logs, caches, OS and tool files
+*.log
+logs/
+.cache/
+.DS_Store
+*.zip

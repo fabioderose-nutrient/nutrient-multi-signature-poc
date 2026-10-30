@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Multi-Signature Workflow PoC - Nutrient Web SDK</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="toolbar">
+    <div class="brand">Multi-Signature PoC <span class="brand-sub">Nutrient Web SDK</span></div>
+    <div class="controls">
+      <label>Document
+        <select id="doc-select"></select>
+      </label>
+      <button id="reset-btn" class="btn subtle" title="Restore the original file from input-docs">Reset</button>
+      <div class="user-badge">
+        <span id="user-avatar" class="step-avatar"></span>
+        <span id="user-name"></span>
+      </div>
+      <button id="sign-btn" class="btn primary">Sign document</button>
+      <button id="panel-btn" class="btn subtle">Signatures panel</button>
+    </div>
+  </header>
+
+  <nav id="stepper" class="stepper"></nav>
+  <div id="trial-banner" class="trial-banner hidden">
+    Evaluation mode: signing is disabled because the evaluation watermark changes signed
+    revisions, and other PDF readers then reject the signatures. Set NUTRIENT_WEB_LICENSE_KEY
+    and open the app in a regular browser to sign.
+  </div>
+
+  <main class="layout">
+    <div id="viewer"></div>
+    <aside id="sig-panel" class="sig-panel collapsed">
+      <div class="sig-panel-header">
+        <h2>Signatures</h2>
+        <button id="panel-close" class="icon-btn" title="Close panel">&times;</button>
+      </div>
+      <div id="sig-overall" class="sig-overall"></div>
+      <div id="sig-list" class="sig-list"></div>
+    </aside>
+  </main>
+
+  <div id="sign-modal" class="modal hidden">
+    <div class="modal-card">
+      <h3>Sign as <span id="modal-user"></span></h3>
+      <div class="modal-row">
+        <label>Signature field</label>
+        <select id="field-select"></select>
+      </div>
+      <div class="modal-row">
+        <label>Reason</label>
+        <input id="reason-input" type="text" placeholder="I approve this document" />
+      </div>
+      <div class="modal-row">
+        <label>Location</label>
+        <input id="location-input" type="text" placeholder="Head office" />
+      </div>
+      <div class="modal-actions">
+        <button id="modal-cancel" class="btn subtle">Cancel</button>
+        <button id="modal-confirm" class="btn primary">Sign and save</button>
+      </div>
+      <div id="modal-status" class="modal-status"></div>
+    </div>
+  </div>
+
+  <div id="toast" class="toast"></div>
+
+  <script src="/vendor/nutrient/nutrient-viewer.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
